@@ -1,0 +1,121 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+
+
+
+#header{
+    background-size: 100% 35%;
+    background-position: center 35px;
+    background-image: url("images/menubg.png");
+    background-repeat: no-repeat;
+    top: 10px!important;
+    position: relative;
+    background-color: #fff0;
+    border-bottom: none;
+    min-height: 130px;
+}
+
+#header.full-header #logo {
+
+    border-right: none;
+    margin-left: 8%;
+}
+
+ #logo img {
+    height: 120px;
+    }
+
+#primary-menu {
+    float: right;
+    margin-top: 8px;
+    margin-right: 40px;
+}
+
+#header.full-header #primary-menu > ul {
+
+     border-right: none; 
+}
+
+#primary-menu ul li > a {
+    color: #fff;
+}
+
+#header.sticky-header:not(.static-sticky) #primary-menu > ul > li > a {
+
+    color: #177d36;
+    margin-top: -5px;
+}
+
+
+#primary-menu ul ul.menu-pos-invert:not(.mega-menu-column){
+    left: auto;
+    right: 0;
+    margin-top: -30px;
+}
+
+#header.sticky-header:not(.static-sticky) #primary-menu ul ul.menu-pos-invert:not(.mega-menu-column){
+    left: auto;
+    right: 0;
+    margin-top: -10px;
+}
+
+
+
+.top-title{
+
+	color: #177d36;
+    position: fixed;
+    font-size: 20px;
+    left: 25%;
+
+
+}
+
+
+.top-admin{
+
+    color: #177d36;
+    position: fixed;
+    font-size: 20px;
+    right: 2%;
+
+
+}
+
+#header.sticky-header:not(.static-sticky) .top-title{
+
+	color: #177d36;
+    position: fixed;
+    font-size: 20px;
+    left: 20%;
+    top: 2%;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+.btn-info.disabled, .btn-info:disabled {
+    color: #fff;
+    background-color: #177d36;
+    border-color: #f7cc19;
+}
+
+
+
+.btn-info {
+    color: #fff;
+    background-color: #177d36;
+    border-color: #f7cc19;
+}

@@ -1,0 +1,16 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+
+
+
+header{
+    background-size: 100% 65%;
+    background-position: center 20px;
+    background-image: url("images/menubg.png");
+    background-repeat: no-repeat;
+    top: 40px!important;
+}
