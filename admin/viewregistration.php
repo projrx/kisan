@@ -79,6 +79,9 @@
         $name = $row['name']; 
         $fname = $row['fname']; 
         $dob = $row['dob']; 
+        $img = $row['img']; 
+        $refname = $row['refname']; 
+        $reffname = $row['reffname']; 
         $idcard = $row['idcard']; 
         $phone = $row['phone']; 
         $address = $row['address']; 
@@ -104,10 +107,15 @@
 							<div class="tab-container">
 
 
-								<div class="tab-content clearfix" id="tabs-2">
-										<a href="../images/forms/<?php echo $img1 ?>" target="blank"> <img style="width:300px;height: 200px; " src="../images/forms/<?php echo $img1 ?>" class="" ?> </a>
+								<div class="tab-content clearfix" id="tabs-1">
+										<a href="../images/forms/<?php echo $img ?>" target="blank"> <img style="width:200px;height: 200px; " src="../images/forms/<?php echo $img ?>" class="" ?> </a>
 
 								</div>
+
+                <div class="tab-content clearfix" id="tabs-2">
+                    <a href="../images/forms/<?php echo $img1 ?>" target="blank"> <img style="width:300px;height: 200px; " src="../images/forms/<?php echo $img1 ?>" class="" ?> </a>
+
+                </div>
 								<div class="tab-content clearfix" id="tabs-3">
 									<a href="../images/forms/<?php echo $img2 ?>" target="blank"> 
 										<img style="width:300px;height: 200px; " src="../images/forms/<?php echo $img2 ?>" class="" ?>
@@ -118,7 +126,8 @@
 							<ul class="tab-nav	 clearfix">
 								
 
-								<li><a href="#tabs-2">Front Image</a></li>
+								<li><a href="#tabs-1">Profile Image</a></li>
+                <li><a href="#tabs-2">Front Image</a></li>
 								<li><a href="#tabs-3">Back Image</a></li>
 
 							</ul>
@@ -224,6 +233,15 @@
 
           </tr>
 
+          <tr>
+            <td> Reference: </td>
+            <td  style="max-width: 60px;">
+              <?php if (empty($refname)) echo 'No Refernce.'; else echo 'Name: '.$refname.' '.$reffname; ?>
+
+
+            </td>
+
+          </tr>
           <tr>
             <td> Member ID Card Status: </td>
             <td  style="max-width: 60px;">

@@ -1,50 +1,62 @@
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
-<head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-	<?php include 'include/head.php'; ?>
-	<!-- Document Title
-	============================================= -->
-	<title>Become a Member Registration  | APKI Party</title>
-	<link rel="new stylesheet" href="custom.css" type="text/css" />
+  <?php include 'include/head.php'; ?>
+  <!-- Document Title
+  ============================================= -->
+  <title>Become a Member Registration  | APKI Party</title>
+  <link rel="new stylesheet" href="custom.css" type="text/css" />
 
 <?php 
   if(isset($_POST['updateid'])){
-		$n=1;
-		if (!empty($_FILES['img'.$n]['name'])) {
-			${"img" . $n} = md5(uniqid())  . "1.png";
-			$target = "images/forms/".basename(${"img" . $n});
-			$move=move_uploaded_file($_FILES['img'.$n]['tmp_name'], $target);
-			}
+    $n=1;
+    if (!empty($_FILES['img'.$n]['name'])) {
+      ${"img" . $n} = md5(uniqid())  . "1.png";
+      $target = "images/forms/".basename(${"img" . $n});
+      $move=move_uploaded_file($_FILES['img'.$n]['tmp_name'], $target);
+      }
 
-		$n=2;
-		if (!empty($_FILES['img'.$n]['name'])) {
-			${"img" . $n} = md5(uniqid())  . "1.png";
-			$target = "images/forms/".basename(${"img" . $n});
-			$move=move_uploaded_file($_FILES['img'.$n]['tmp_name'], $target);
-			}
-  	$datec=date('Y-m-d');
-  	$data=mysqli_query($con,"INSERT INTO member 
-  	(`name`,`fname`,`dob`,`idcard`,`phone`,`address`,`tehsil`,`chak`,`datec`,`img1`,`img2`) 
-  	VALUES 
-  	( '".mysqli_real_escape_string($con,$_POST['name'])."' 
-  	, '".mysqli_real_escape_string($con,$_POST['fname'])."'
-  	, '".mysqli_real_escape_string($con,$_POST['dob'])."'
-  	, '".mysqli_real_escape_string($con,$_POST['idcard'])."'
-  	, '".mysqli_real_escape_string($con,$_POST['phone'])."'
-  	, '".mysqli_real_escape_string($con,$_POST['address'])."'
-  	, '".mysqli_real_escape_string($con,$_POST['tehsil'])."'
-  	, '".mysqli_real_escape_string($con,$_POST['chak'])."'
-  	, '".mysqli_real_escape_string($con,$datec)."'
-  	, '".mysqli_real_escape_string($con,$img1)."'
-  	, '".mysqli_real_escape_string($con,$img2)."'
-  	)")or die( mysqli_error($con) );
+    $n=2;
+    if (!empty($_FILES['img'.$n]['name'])) {
+      ${"img" . $n} = md5(uniqid())  . "1.png";
+      $target = "images/forms/".basename(${"img" . $n});
+      $move=move_uploaded_file($_FILES['img'.$n]['tmp_name'], $target);
+      }
+      
+    $n=3;
+    if (!empty($_FILES['img'.$n]['name'])) {
+      ${"img" . $n} = md5(uniqid())  . "1.png";
+      $target = "images/forms/".basename(${"img" . $n});
+      $move=move_uploaded_file($_FILES['img'.$n]['tmp_name'], $target);
+      }
+      
+    $datec=date('Y-m-d');
+    $data=mysqli_query($con,"INSERT INTO member 
+    (`name`,`fname`,`dob`,`idcard`,`phone`,`address`,`tehsil`,`chak`,`datec`,`img1`,`img2`,`img`,`refname`,`reffname`) 
+    VALUES 
+    ( '".mysqli_real_escape_string($con,$_POST['name'])."' 
+    , '".mysqli_real_escape_string($con,$_POST['fname'])."'
+    , '".mysqli_real_escape_string($con,$_POST['dob'])."'
+    , '".mysqli_real_escape_string($con,$_POST['idcard'])."'
+    , '".mysqli_real_escape_string($con,$_POST['phone'])."'
+    , '".mysqli_real_escape_string($con,$_POST['address'])."'
+    , '".mysqli_real_escape_string($con,$_POST['tehsil'])."'
+    , '".mysqli_real_escape_string($con,$_POST['chak'])."'
+    , '".mysqli_real_escape_string($con,$datec)."'
+    , '".mysqli_real_escape_string($con,$img1)."'
+    , '".mysqli_real_escape_string($con,$img2)."'
+    , '".mysqli_real_escape_string($con,$img3)."'
+    , '".mysqli_real_escape_string($con,$_POST['refname'])."'
+    , '".mysqli_real_escape_string($con,$_POST['reffname'])."'
+
+    )")or die( mysqli_error($con) );
 
 
       $rows =mysqli_query($con,"SELECT id FROM member ORDER BY id desc limit 1" ) or die(mysqli_error($con));
        while($row=mysqli_fetch_array($rows)){
-        $id = $row['id']; 	}
+        $id = $row['id'];   }
 
       ($msg=mysqli_error($con));
       if(empty($msg)) header("location:registration.php?success=1&memberid=$id");
@@ -54,7 +66,7 @@
 
 
   <style type="text/css">
-  	.table th, .table td {
+    .table th, .table td {
 
     vertical-align: baseline;
 }
@@ -66,29 +78,29 @@
 
 <body class="stretched">
 
-	<!-- Document Wrapper
-	============================================= -->
-	<div id="wrapper" class="clearfix">
+  <!-- Document Wrapper
+  ============================================= -->
+  <div id="wrapper" class="clearfix">
 
-		<!-- Header
-		============================================= -->
-		<?php 	include 'include/header.php'; ?>
+    <!-- Header
+    ============================================= -->
+    <?php   include 'include/header.php'; ?>
 
 
 <?php if(empty($_GET['success'])){ ?>
 
 
-		<!-- Content
-		============================================= -->
-		<section id="content">
+    <!-- Content
+    ============================================= -->
+    <section id="content">
 
-			<div class="content-wrap">
+      <div class="content-wrap">
 
-				<div class="container clearfix">
+        <div class="container clearfix">
 
 
-		<h3>Become a Member of APKI:</h3>
-		<br>
+    <h3>Become a Member of APKI:</h3>
+    <br>
 
     <table class="table table-hover">
      
@@ -99,10 +111,10 @@
 
           <tr>
             <td style="min-width:100px;">
-            	 <label>Name (As on ID-Card):</label>
+               <label>Name (As on ID-Card):</label>
             </td>
             <td>
-              <input style="max-width: 400px;" type="text" class="form-control" id="name" name="name" value="" required="" onchange="run();">	
+              <input style="max-width: 400px;" type="text" class="form-control" id="name" name="name" value="" required="" onchange="run();"> 
             </td>
 
           </tr>
@@ -110,12 +122,21 @@
 
           <tr>
             <td style="min-width:100px;">
-            	 <label>Father's Name:</label>
-            	 
+               <label>Father's Name:</label>
+               
             </td>
             <td>
-              <input style="max-width: 400px;" type="text" class="form-control" name="fname" value="" required="">	
+              <input style="max-width: 400px;" type="text" class="form-control" name="fname" value="" required="">  
             </td>
+
+          </tr>
+
+          <tr>
+            <td> <label>Profile Image: </label> </td>
+            <td>
+              <input style="max-width: 250px;" type="file" accept="image/*" class="form-control" name="img3" required="">
+            </td>
+
 
           </tr>
 
@@ -123,50 +144,11 @@
 
           <tr>
             <td style="min-width:100px;">
-            	 <label>Date of Birth:</label>
-            	 
+               <label>Date of Birth:</label>
+               
             </td>
             <td>
-              <input style="max-width: 200px;" type="date" class="form-control" name="dob" value="" required="">	
-            </td>
-
-          </tr>
-
-
-
-          <tr>
-            <td style="min-width:100px;">
-            	 <label>ID Card No:</label>
-            	 
-            </td>
-            <td>
-              <input style="max-width: 400px;" type="number" class="form-control" name="idcard" value="" required="">	
-            </td>
-
-          </tr>
-
-
-          <tr>
-            <td style="min-width:100px;">
-            	 <label>Mobile / Phone:</label>
-            	 
-            </td>
-            <td>
-              <input style="max-width: 400px;" type="number" class="form-control" name="phone" value="" required="">	
-            </td>
-
-          </tr>
-
-
-
-
-          <tr>
-            <td style="min-width:100px;">
-            	 <label>Address:</label>
-            	 
-            </td>
-            <td>
-              <input style="max-width: 600px;" type="text" class="form-control" name="address" value="" required="">	
+              <input style="max-width: 200px;" type="date" class="form-control" name="dob" value="" required="">  
             </td>
 
           </tr>
@@ -175,11 +157,11 @@
 
           <tr>
             <td style="min-width:100px;">
-            	 <label>Tehsil:</label>
-            	 
+               <label>ID Card No:</label>
+               
             </td>
             <td>
-              <input style="max-width: 400px;" type="text" class="form-control" name="tehsil" value="" required="">	
+              <input style="max-width: 400px;" type="number" class="form-control" name="idcard" value="" required=""> 
             </td>
 
           </tr>
@@ -187,11 +169,50 @@
 
           <tr>
             <td style="min-width:100px;">
-            	 <label>Chak:</label>
-            	 
+               <label>Mobile / Phone:</label>
+               
             </td>
             <td>
-              <input style="max-width: 400px;" type="text" class="form-control" name="chak" value="" required="">	
+              <input style="max-width: 400px;" type="number" class="form-control" name="phone" value="" required="">  
+            </td>
+
+          </tr>
+
+
+
+
+          <tr>
+            <td style="min-width:100px;">
+               <label>Address:</label>
+               
+            </td>
+            <td>
+              <input style="max-width: 600px;" type="text" class="form-control" name="address" value="" required="">  
+            </td>
+
+          </tr>
+
+
+
+          <tr>
+            <td style="min-width:100px;">
+               <label>Tehsil:</label>
+               
+            </td>
+            <td>
+              <input style="max-width: 400px;" type="text" class="form-control" name="tehsil" value="" required=""> 
+            </td>
+
+          </tr>
+
+
+          <tr>
+            <td style="min-width:100px;">
+               <label>Chak:</label>
+               
+            </td>
+            <td>
+              <input style="max-width: 400px;" type="text" class="form-control" name="chak" value="" required=""> 
             </td>
 
           </tr>
@@ -216,14 +237,30 @@
 
 
 
+          <tr>
+            <td> <label> Referance Member: </label></td>
+            <td>
+                <input type="checkbox" id="refcheck" onchange="ref();"> Refer
+              <div id="refer" style="display:none" >
+                  
+              <input style="max-width: 400px;" type="text" class="form-control" name="refname" value="" placeholder="Name">
+              <input style="max-width: 400px;" type="text" class="form-control" name="reffname" value="" placeholder="Father Name" >
+              </div>
+    
+            </td>
+
+          </tr>
 
 
 
-          <tr style="background: none !important;">	<td colspan="2">
-	          		<input type="checkbox" name="check" required="">
-	          		<lablel> I ' <input style="border: none;width:auto;" class="" type="text" id="tname" name="tname" value="">' with my own well joining this party and from this date ' <?php echo date('d-m-Y'); ?> ' I will be Loyal and bound all party decisions, party policies, work for party to develop Pakistan. In case of miss conduct party can cancel my registration or I would face all legal procedure of Party.
-	          		</label>
-          		</td>
+
+
+
+          <tr style="background: none !important;"> <td colspan="2">
+                <input type="checkbox" name="check" required="">
+                <lablel> I ' <input style="border: none;width:auto;" class="" type="text" id="tname" name="tname" value="">' with my own well joining this party and from this date ' <?php echo date('d-m-Y'); ?> ' I will be Loyal and bound all party decisions, party policies, work for party to develop Pakistan. In case of miss conduct party can cancel my registration or I would face all legal procedure of Party.
+                </label>
+              </td>
 
           </tr>
 
@@ -251,50 +288,61 @@
 
 
 
-				</div>
+        </div>
 
-			</div>
+      </div>
 
-		</section><!-- #content end -->
+    </section><!-- #content end -->
 
-	<?php } else{  ?>
+  <?php } else{  ?>
 
 
-		<section>
-			<div class="container">
-				<div class="text-center">
-					<h3>Registration successful.</h3>
-					<label style="font-size: 18px;font-weight: 200">
-					Welcome to All Pakistan Kisan Itehad.<br>
-					ur member ship no is: <strong style="font-weight: 800"> <?php echo $_GET['memberid'] ?> </strong> .<br>
-					Kindly contact Tehsil Office to get your Member ship card
-				</label>
+    <section>
+      <div class="container">
+        <div class="text-center">
+          <h3>Registration successful.</h3>
+          <label style="font-size: 18px;font-weight: 200">
+          Welcome to All Pakistan Kisan Itehad.<br>
+          ur member ship no is: <strong style="font-weight: 800"> <?php echo $_GET['memberid'] ?> </strong> .<br>
+          Kindly contact Tehsil Office to get your Member ship card
+        </label>
 
-				<br><br>
-				<a href="http://apkiparty.com/" class="btn btn-info">Back to Home</a>
-			</div>
-		</div>
+        <br><br>
+        <a href="http://apkiparty.com/" class="btn btn-info">Back to Home</a>
+      </div>
+    </div>
 
-		</section>
+    </section>
 
-	<?php } ?>
+  <?php } ?>
 
-		<!-- Footer
-		============================================= -->
-	
-			<?php 	include 'include/footer.php'; ?>
+    <!-- Footer
+    ============================================= -->
+  
+      <?php   include 'include/footer.php'; ?>
 
-			
-	</div><!-- #wrapper end -->
+      
+  </div><!-- #wrapper end -->
 
-	<script type="text/javascript">
-		
-		function run() {
-			x = document.getElementById('name').value;
-			document.getElementById('tname').value=x;
-		}
+  <script type="text/javascript">
+    
+    function run() {
+      x = document.getElementById('name').value;
+      document.getElementById('tname').value=x;
+    }
 
-	</script>
+    function ref() {
+      if(document.getElementById('refcheck').checked == true){
+        document.getElementById('refer').style.display='block';
+      }else{
+              document.getElementById('refer').style.display='none';
+
+      }
+    }
+
+  </script>
+
+
 
 </body>
 </html>
