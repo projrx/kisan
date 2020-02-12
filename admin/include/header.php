@@ -20,7 +20,7 @@
 					<nav id="primary-menu">
 
 						<ul>
-							<li><a href="http://apkiparty.com/"><div><i class="icon-home"></i> Home</div></a>
+							<li><a href="index.php"><div><i class="icon-home"></i> Home</div></a>
 								
 							</li>
 						

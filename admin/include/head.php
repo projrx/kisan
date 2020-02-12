@@ -16,4 +16,4 @@
 	<link rel="stylesheet" href="../css/responsive.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="../css/components/bs-datatable.css" type="text/css" />
+	<link rel="stylesheet" href="../css/components/bs-datatable.css" type="text/css" />

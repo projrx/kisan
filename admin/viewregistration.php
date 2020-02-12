@@ -316,7 +316,7 @@
 
       <?php
 
-      $rows =mysqli_query($con,"SELECT * FROM member " ) or die(mysqli_error($con));
+      $rows =mysqli_query($con,"SELECT * FROM member LIMIT 10" ) or die(mysqli_error($con));
 
       while($row=mysqli_fetch_array($rows)){
 
@@ -375,12 +375,19 @@
 
 				</div>
 
+
 			</div>
 
 			<br><br>
+      <br><br>
 
 		</section><!-- #content end -->
-
+      <div class="container">
+        <div class="text-center">
+          <a href="searchregistration.php?limitres=100&search=ok"><u> <h3>Search & Export Members Forms</h3> </u> </a>
+        </div>
+    
+      </div>
 
 
 		<!-- Footer
