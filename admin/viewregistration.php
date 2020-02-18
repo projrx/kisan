@@ -304,10 +304,10 @@
        ID Card No. 
      </th>
     <th>
-      Image:
+      Profile:
     </th>
     <th style="width:;">
-      Date:
+      Phone:
     </th>
     <th class="hidden-xs">
       Save
@@ -322,10 +322,11 @@
 
         $id = $row['id']; 
         $name = $row['name']; 
+        $phone = $row['phone']; 
         $fname = $row['fname']; 
         $datec = $row['datec']; 
         $idcard = $row['idcard']; 
-        $img1 = $row['img1']; 
+        $img = $row['img']; 
 
 
         ?>
@@ -343,11 +344,11 @@
               <?php echo $idcard ?>
             </td>
             <td>
-              <img style="width:100px;height: 70px; " src="../images/forms/<?php echo $img1 ?>" class="form-control" ?><br>
+              <img style="width:100px;height: 70px; " src="../images/forms/<?php echo $img ?>" class="form-control" ?><br>
 
             </td>
             <td>
-              <?php echo $datec ?>
+              <?php echo $phone ?>
 
             </td>
 
