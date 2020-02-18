@@ -20,30 +20,32 @@
 
             
 
-    $n=1;
-    if (!empty($_FILES['img'.$n]['name'])) {
-      ${"img" . $n} = md5(uniqid())  . "1.png";
-      $target = "images/forms/".basename(${"img" . $n});
-      $move=move_uploaded_file($_FILES['img'.$n]['tmp_name'], $target);
-      }
 
-    $n=2;
-    if (!empty($_FILES['img'.$n]['name'])) {
-      ${"img" . $n} = md5(uniqid())  . "1.png";
-      $target = "images/forms/".basename(${"img" . $n});
-      $move=move_uploaded_file($_FILES['img'.$n]['tmp_name'], $target);
-      }
-      
-    $n=3;
-    if (!empty($_FILES['img'.$n]['name'])) {
-      ${"img" . $n} = md5(uniqid())  . "1.png";
-      $target = "images/forms/".basename(${"img" . $n});
-      $move=move_uploaded_file($_FILES['img'.$n]['tmp_name'], $target);
-      }
+  $image[0]='';
+  $image[1]='';
+  $image[2]='';
+
+  
+  for ($n=0;$n<3;$n++) { 
+
+  if(!empty($img = $_POST['img'.$n])) { 
+   $img = $_POST['img'.$n]; 
+
+  if (strpos($img, 'data:image/jpeg;base64,') === 0) {
+      $img = str_replace('data:image/jpeg;base64,', '', $img); $ext = '.jpg';  }
+  if (strpos($img, 'data:image/png;base64,') === 0) {
+      $img = str_replace('data:image/png;base64,', '', $img);   $ext = '.png'; }
+  $img = str_replace(' ', '+', $img);
+  $data = base64_decode($img);
+  $image[$n] = md5(uniqid()).'1.png';
+  $file = 'images/forms/'.$image[$n];
+  if (file_put_contents($file, $data)) $msg='Succesful';
+  }
+}
       
     $datec=date('Y-m-d');
     $data=mysqli_query($con,"INSERT INTO member 
-    (`name`,`fname`,`dob`,`idcard`,`phone`,`address`,`tehsil`,`chak`,`datec`,`img1`,`img2`,`img`,`refname`,`reffname`) 
+    (`name`,`fname`,`dob`,`idcard`,`phone`,`address`,`tehsil`,`chak`,`datec`,`img`,`img1`,`img2`,`refname`,`reffname`) 
     VALUES 
     ( '".mysqli_real_escape_string($con,$_POST['name'])."' 
     , '".mysqli_real_escape_string($con,$_POST['fname'])."'
@@ -54,9 +56,9 @@
     , '".mysqli_real_escape_string($con,$_POST['tehsil'])."'
     , '".mysqli_real_escape_string($con,$_POST['chak'])."'
     , '".mysqli_real_escape_string($con,$datec)."'
-    , '".mysqli_real_escape_string($con,$img1)."'
-    , '".mysqli_real_escape_string($con,$img2)."'
-    , '".mysqli_real_escape_string($con,$img3)."'
+    , '".mysqli_real_escape_string($con,$image[0])."'
+    , '".mysqli_real_escape_string($con,$image[1])."'
+    , '".mysqli_real_escape_string($con,$image[2])."'
     , '".mysqli_real_escape_string($con,$_POST['refname'])."'
     , '".mysqli_real_escape_string($con,$_POST['reffname'])."'
 
@@ -148,12 +150,16 @@
           <tr>
             <td> <label>Profile Image: </label> </td>
             <td>
-              <input style="max-width: 250px;" type="file" accept="image/*" class="form-control" name="img3" required="">
+
+
+        <input id="inp_file0" required="" type="file"  accept="image/*" class="form-control" required="">
+        <input id="inp_img0" name="img0" type="hidden" value="">
+
+
             </td>
 
 
           </tr>
-
 
 
           <tr>
@@ -235,7 +241,12 @@
           <tr>
             <td> <label>ID Card Front Image: </label> </td>
             <td>
-              <input style="max-width: 250px;" type="file" accept="image/*" class="form-control" name="img1" required="">
+
+
+
+        <input id="inp_file1" type="file" class="form-control" required=""  accept="image/*" >
+        <input id="inp_img1" name="img1" type="hidden" value="">
+
             </td>
 
 
@@ -244,7 +255,11 @@
           <tr>
             <td> <label> ID Card Back Image: </label></td>
             <td>
-              <input style="max-width: 250px;" type="file" accept="image/*" class="form-control" name="img2" required="">
+
+
+        <input id="inp_file2" type="file" class="form-control" required=""  accept="image/*" >
+        <input id="inp_img2" name="img2" type="hidden" value="">
+
             </td>
 
           </tr>
@@ -354,6 +369,47 @@
 
       
   </div><!-- #wrapper end -->
+
+
+
+
+
+ <?php for ($n=0;$n<3;$n++) { ?>
+<script>
+   function fileChange(e) { 
+     document.getElementById('inp_img<?php echo $n; ?>').value = '';
+     var file = e.target.files[0];
+      if (file.type == "image/jpeg" || file.type == "image/png") {         var reader = new FileReader();  
+        reader.onload = function(readerEvent) {
+              var image = new Image();
+           image.onload = function(imageEvent) {    
+              var max_size = 600;
+              var w = image.width;
+              var h = image.height;             
+              if (w > h) {  if (w > max_size) { h*=max_size/w; w=max_size; }
+              } else     {  if (h > max_size) { w*=max_size/h; h=max_size; } }             
+              var canvas = document.createElement('canvas');
+              canvas.width = w;
+              canvas.height = h;
+              canvas.getContext('2d').drawImage(image, 0, 0, w, h);                 
+              if (file.type == "image/jpeg") {
+                 var dataURL = canvas.toDataURL("image/jpeg", 1.0);
+              } else {
+                 var dataURL = canvas.toDataURL("image/png");   
+              }
+              document.getElementById('inp_img<?php echo $n; ?>').value = dataURL;  }
+           image.src = readerEvent.target.result;  }
+        reader.readAsDataURL(file);} else {
+        document.getElementById('inp_file<?php echo $n; ?>').value = ''; 
+        alert('Please only select images in JPG- or PNG-format.');  } }
+  document.getElementById('inp_file<?php echo $n; ?>').addEventListener('change', fileChange, false);      
+</script>
+
+<?php } ?>
+ 
+
+
+
 
   <script type="text/javascript">
     
