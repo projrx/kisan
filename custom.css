@@ -107,15 +107,28 @@
 
 
 .btn-info.disabled, .btn-info:disabled {
-    color: #fff;
-    background-color: #177d36;
-    border-color: #f7cc19;
+    color: #fff !important;
+    background-color: #177d36 !important;
+    border-color: #f7cc19 !important;
 }
 
 
 
 .btn-info {
-    color: #fff;
-    background-color: #177d36;
-    border-color: #f7cc19;
+    color: #fff !important;
+    background-color: #177d36 !important;
+    border-color: #f7cc19 !important;
+}
+
+.color-y{
+    color: #e4b40b !important;
+
+}
+.color-g{
+    color: #177d36  !important;
+    
+}
+
+.dataTables_filter{
+    float: right;
 }

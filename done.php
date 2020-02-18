@@ -6,6 +6,7 @@ if(!isset($_SESSION['user'])){
 // Store Session Data
  $username= $_SESSION['user'];  // Initializing Session with value of PHP Variable
  ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -13,11 +14,13 @@ if(!isset($_SESSION['user'])){
 	<?php include 'include/head.php'; ?>
 	<!-- Document Title
 	============================================= -->
-	<title>Home - APKI</title>
+	<title>Confirm | APKI Party</title>
 	<link rel="new stylesheet" href="custom.css" type="text/css" />
 
-</head>
 
+
+
+</head>
 <body class="stretched">
 
 	<!-- Document Wrapper
@@ -30,12 +33,21 @@ if(!isset($_SESSION['user'])){
 
 
 
+	<div class="container">
+		<br>
 
-		<!-- Content
-		============================================= -->
-		<section id="content">
 
-		</section><!-- #content end -->
+<center>
+      <h1>Order Confirm Successfull. Thank You!</h1>
+    </center>
+
+    <br><br>
+
+
+
+	</div><!-- /container -->
+	
+
 
 		<!-- Footer
 		============================================= -->

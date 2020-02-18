@@ -39,10 +39,6 @@
 	<script src="../js/components/bs-datatable.js"></script>
 
 
-		<!-- Footer Scripts
-	============================================= -->
-	<script src="js/functions.js"></script>
-
 	<script>
 
 		$(document).ready(function() {
@@ -50,6 +46,5 @@
 		});
 
 	</script>
-
 
 	

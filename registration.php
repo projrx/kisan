@@ -11,6 +11,15 @@
 
 <?php 
   if(isset($_POST['updateid'])){
+
+    $idcardchk=$_POST['idcard'];
+
+          $rows =mysqli_query($con,"SELECT * FROM member where  idcard='$idcardchk'" ) or die(mysqli_error($con));
+           $citems = mysqli_num_rows ( $rows );
+           if(empty($citems)){
+
+            
+
     $n=1;
     if (!empty($_FILES['img'.$n]['name'])) {
       ${"img" . $n} = md5(uniqid())  . "1.png";
@@ -61,7 +70,12 @@
       ($msg=mysqli_error($con));
       if(empty($msg)) header("location:registration.php?success=1&memberid=$id");
 
+    }else{
+      header("location:registration.php?already=1&success=1");
     }
+
+
+  }
   ?>
 
 
@@ -294,7 +308,24 @@
 
     </section><!-- #content end -->
 
-  <?php } else{  ?>
+  <?php } else if(!empty($_GET['already'])){  ?>
+
+
+    <section>
+      <div class="container">
+        <div class="text-center">
+          <h3>Registration Already Entered.</h3>
+          
+
+
+        <br><br>
+        <a href="http://apkiparty.com/" class="btn btn-info">Back to Home</a>
+      </div>
+    </div>
+
+    </section>
+
+  <?php } else {  ?>
 
 
     <section>

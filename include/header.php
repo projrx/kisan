@@ -1,4 +1,5 @@
-	<header id="header" class="full-header">
+
+        <header id="header" class="full-header">
 
 		<div id="header-wrap">
 
@@ -25,7 +26,7 @@
 								
 							</li>
 						
-							<li><a href="#"><div><i class="icon-file2"></i> Custom Forms</div></a>
+							<li><a href="#"><div><i class="icon-file2"></i> Forms</div></a>
 								<ul class="menu-pos-invert">
 									<li><a href="registration.php"><div>Member Registration</div></a></li>
 									<li><a href="zakatfund.php"><div>Zakat Fund Donation</div></a></li>
@@ -36,7 +37,7 @@
 
 
 
-							<li><a href="register.php"><div><i class="icon-cart"></i>Kisan Mandi</div></a>
+							<li><a href="shop.php"><div><i class="icon-shop"></i>Kisan Mandi</div></a>
 								
 								<ul class="menu-pos-invert">
 									
@@ -44,6 +45,9 @@
 									<li><a href="kisansell.php"><div>Kisan Sell</div></a></li>
 								</ul>
 							</li>
+						
+
+
 						
 							<?php 
 if(isset($_SESSION['user'])){
@@ -68,6 +72,24 @@ if(isset($_SESSION['user'])){
 							</li>
 						<?php } ?>
 
+
+							<?php 
+if(isset($_SESSION['user'])){
+							 ?>
+							<li><a href="cart.php"><div><i class="icon-cart"></i>Cart &nbsp;
+								<div class="badge" style="background: white; color: green">
+								<?php 
+
+          $rows =mysqli_query($con,"SELECT * FROM orders where status='cart' AND actid='$memberid'" ) or die(mysqli_error($con));
+          
+          	echo $citems = mysqli_num_rows ( $rows );
+
+             ?>	
+
+								</div>
+							 </div></a>
+							</li>
+						<?php } ?>
 						</ul>
 
 				

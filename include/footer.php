@@ -1,3 +1,11 @@
+
+    <div class="text-center">
+        <h2 class="color-r">
+<?php if(!empty($msg)) echo $msg; ?>
+          </h2>
+    </div>
+
+
 	<footer id="footer" class="dark">
 
 		
@@ -34,4 +42,27 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="js/functions.js"></script>
+	
+
+		<!-- Footer Scripts
+	============================================= -->
+	<script src="js/functions.js"></script>
+	
+	<!-- Bootstrap Data Table Plugin -->
+	<script src="js/components/bs-datatable.js"></script>
+
+
+	
+
+
+
+	<script>
+
+		$(document).ready(function() {
+			$('#datatable1').dataTable();
+		});
+
+	</script>
+
+
 	

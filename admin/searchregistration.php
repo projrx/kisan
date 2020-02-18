@@ -49,9 +49,6 @@ div.dataTables_wrapper div.dataTables_filter input {
   </style>
 
 
-
-
-
 </head>
 
 <body class="">

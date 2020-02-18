@@ -24,11 +24,19 @@
 								
 							</li>
 						
-							<li><a href="#"><div><i class="icon-file2"></i> View Forms</div></a>
+							<li><a href="index.php"><div><i class="icon-file2"></i> View Forms</div></a>
 								<ul class="menu-pos-invert">
 									<li><a href="viewregistration.php"><div>View Member Registration</div></a></li>
 									<li><a href="viewzakatfund.php"><div> View Zakat Fund Donation</div></a></li>
 									<li><a href="viewpartyfund.php"><div>View Party Fund Donation</div></a></li>
+
+								</ul>
+							</li>
+							<li><a href="#"><div><i class="icon-cart"></i> Kisan Mandi </div></a>
+								<ul class="menu-pos-invert">
+									<li><a href="viewkisanbuy.php"><div>View Kisan Buy Forms</div></a></li>
+									<li><a href="viewkisansell.php"><div> View Kisan Sell  Forms</div></a></li>
+
 
 								</ul>
 							</li>

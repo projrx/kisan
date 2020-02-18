@@ -65,7 +65,7 @@
 <?php if(!empty($_GET['id'])){ ?>
 
   <?php $id=$_GET['id']; ?>
-
+    <div class="container">
     <br><br>
    <table class="table table-bordered">
    <?php
@@ -266,7 +266,7 @@
     </table>
 
 </div>
-</section>
+
 
     <br>
     <hr>

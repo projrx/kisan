@@ -84,7 +84,11 @@ if(!isset($_SESSION['user'])){
                 <h3><?php echo $name ?></h3>
                 <span>@<?php echo $username ?></span>
                 <span><?php echo $desp ?></span>
+
               </div>
+              <a href="kisansell.php" class="btn btn-info"> Kisan Sell</a>
+              <a href="kisanbuy.php" class="btn btn-info"> Kisan Buy </a>
+              
 
               	<br>
               	<br>
