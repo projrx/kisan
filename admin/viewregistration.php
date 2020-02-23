@@ -304,7 +304,7 @@
        ID Card No. 
      </th>
     <th>
-      Profile:
+      Tehsil:
     </th>
     <th style="width:;">
       Phone:
@@ -327,6 +327,7 @@
         $datec = $row['datec']; 
         $idcard = $row['idcard']; 
         $img = $row['img']; 
+        $tehsil = $row['tehsil']; 
 
 
         ?>
@@ -344,6 +345,8 @@
               <?php echo $idcard ?>
             </td>
             <td>
+              <?php echo $tehsil ?>
+
               <!--
               <img style="width:100px;height: 70px; " src="../images/forms/<?php echo $img ?>" class="form-control" ?><br>
             -->
