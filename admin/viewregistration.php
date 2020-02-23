@@ -316,7 +316,7 @@
 
       <?php
 
-      $rows =mysqli_query($con,"SELECT * FROM member LIMIT 1000 ORDER BY id desc" ) or die(mysqli_error($con));
+      $rows =mysqli_query($con,"SELECT * FROM member ORDER BY id desc LIMIT 1000 " ) or die(mysqli_error($con));
 
       while($row=mysqli_fetch_array($rows)){
 
