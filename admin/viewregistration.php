@@ -344,7 +344,9 @@
               <?php echo $idcard ?>
             </td>
             <td>
+              <!--
               <img style="width:100px;height: 70px; " src="../images/forms/<?php echo $img ?>" class="form-control" ?><br>
+            -->
 
             </td>
             <td>
