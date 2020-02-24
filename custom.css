@@ -5,7 +5,9 @@
 	Overwriting Default Theme Styles for Better Handling Updates
 -----------------------------------------------------------------*/
 
-
+.page-transition-wrap{
+    display: none;
+}
 
 #header{
     background-size: 100% 35%;
