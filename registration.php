@@ -10,13 +10,41 @@
   <link rel="new stylesheet" href="custom.css" type="text/css" />
 
 <?php 
+  if(isset($_GET['checkid'])){
+
+    $idcardchk=$_GET['idcard'];
+
+          $rows =mysqli_query($con,"SELECT * FROM member where  idcard='$idcardchk'" ) or die(mysqli_error($con));
+
+      while($row=mysqli_fetch_array($rows)){
+        $formcheckid = $row['id']; 
+        $formcheckname = $row['name']; 
+        }            
+
+
+           if(!empty($formcheckid)){
+
+                  header("location:registration.php?already=1&success=1&formcheckid=$formcheckid&formcheckname=$formcheckname");
+                }else $msg = "No Data Found. Please Register.";
+
+              }
+
+                ?>
+<?php 
   if(isset($_POST['updateid'])){
 
     $idcardchk=$_POST['idcard'];
 
           $rows =mysqli_query($con,"SELECT * FROM member where  idcard='$idcardchk'" ) or die(mysqli_error($con));
            $citems = mysqli_num_rows ( $rows );
-           if(empty($citems)){
+
+      while($row=mysqli_fetch_array($rows)){
+        $formcheckid = $row['id']; 
+        $formcheckname = $row['name']; 
+        }            
+
+
+           if(empty($formcheckid)){
 
             
 
@@ -73,7 +101,7 @@
       if(empty($msg)) header("location:registration.php?success=1&memberid=$id");
 
     }else{
-      header("location:registration.php?already=1&success=1");
+      header("location:registration.php?already=1&success=1&formcheckid=$formcheckid&formcheckname=$formcheckname");
     }
 
 
@@ -114,6 +142,20 @@
 
         <div class="container clearfix">
 
+          <form action="" method="_GET">
+            <div class="">
+    <h3>Check Existing Registration:</h3>
+    <input type="number" name="idcard" placeholder="Enter ID Card Number" class="form-control" style="max-width: 400px;float: left; margin-right: 20px;">
+    <button type="Submit" name="checkid" value="1" class="btn btn-info" style="">Check </button>
+  </div>
+    <br>
+  </form>
+<center>
+  <h3>
+  <?php   if(!empty($msg)) echo $msg; ?>
+</h3>
+</center>
+  <br><hr><br>
 
     <h3>Become a Member of APKI:</h3>
     <br>
@@ -303,7 +345,7 @@
 
               <div class="text-center">
 
-                <button type="submit" name="updateid"  class="btn btn-info"> <i class="fa fa-plus"></i>Update</button>
+                <button type="submit" name="updateid"  class="btn btn-info"> <i class="fa fa-plus"></i>Submit</button>
               </div>
             </td>
           </tr>
@@ -329,10 +371,16 @@
     <section>
       <div class="container">
         <div class="text-center">
-          <h3>Registration Already Entered.</h3>
-          
+          <h3>Registration Entered.</h3>
 
+          <?php   
 
+    $formcheckid=$_GET['formcheckid'];
+    $formcheckname=$_GET['formcheckname'];
+           ?>
+
+            <h4>Member ID: <?php echo   $formcheckid ?></h4>
+            <h4>Member Name: <?php echo   $formcheckname ?></h4>
         <br><br>
         <a href="http://apkiparty.com/" class="btn btn-info">Back to Home</a>
       </div>
@@ -361,6 +409,9 @@
     </section>
 
   <?php } ?>
+
+
+
 
     <!-- Footer
     ============================================= -->
