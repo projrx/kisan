@@ -151,31 +151,31 @@ header("location:kisansell.php"); // Redirecting To Other Page
           <tr> <td> Company Name: </td><td>
         <input type="text" name="cname" value="<?php echo $cname ?>" class="form-control">
         </td></tr>
-        <tr> <td> Company Name: </td><td>
+        <tr> <td> Company FBR: </td><td>
 
         <input type="text" name="cfbr" value="<?php echo $cfbr ?>" class="form-control">
          </td></tr>
-        <tr> <td> Company Name: </td><td>
+        <tr> <td> Company Address: </td><td>
 
         <input type="text" name="caddress" value="<?php echo $caddress ?>" class="form-control">
          </td></tr>
-        <tr> <td> Company Name: </td><td>
+        <tr> <td> Company Phone: </td><td>
 
         <input type="text" name="cphone" value="<?php echo $cphone ?>" class="form-control">
          </td></tr>
-        <tr> <td> Company Name: </td><td>
+        <tr> <td> Company Email: </td><td>
 
         <input type="email" name="cemail" value="<?php echo $cemail ?>" class="form-control">
          </td></tr>
-        <tr> <td> Company Name: </td><td>
+        <tr> <td> Company Website: </td><td>
 
         <input type="text" name="cwebsite" value="<?php echo $cwebsite ?>" class="form-control">
           </td></tr>
-        <tr> <td> Company Name: </td><td>
+        <tr> <td> Product Name: </td><td>
 
         <input type="text" required="" name="name" value="<?php echo $name ?>" class="form-control">
           </td></tr>
-        <tr> <td> Company Name: </td><td>
+        <tr> <td> Product Price: </td><td>
 
         <input type="Number" required="" name="price" value="<?php echo $price ?>" class="form-control">
           </td></tr>
