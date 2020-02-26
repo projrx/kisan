@@ -18,7 +18,6 @@ if(!isset($_SESSION['user'])){
 	<link rel="new stylesheet" href="custom.css" type="text/css" />
 
 
-
   <?php 
 
     if(!empty($_GET['del'])){
@@ -330,7 +329,7 @@ if(!isset($_SESSION['user'])){
 
 
         ?>
-        <form method="post" action="" enctype="multipart/form-data">
+       
 
           <tr>
             <td>
@@ -374,15 +373,20 @@ if(!isset($_SESSION['user'])){
 
               <div class="btn-group">
 
+                <form action="editsell.php" method="POST">
+                
                 <a class="btn btn-success" href="?id=<?php echo $formid ?>"> <i class="fa fa-eye"></i>View</a>
+                <button type="submit" class="btn btn-default" name="id" value="<?php echo $formid ?>" >Edit</button>
                 <a class="btn btn-danger" href="?del=<?php echo $formid ?>"> <i class="fa fa-trash"></i>Delete</a>
+                
+                </form>
                 
 
               </div>
             </td>
           </tr>
 
-        </form>
+
 
         <?php } ?>
 

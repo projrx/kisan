@@ -14,7 +14,7 @@ if(!isset($_SESSION['user'])){
 	<?php include 'include/head.php'; ?>
 	<!-- Document Title
 	============================================= -->
-	<title>Kisan Sell New | APKI Party</title>
+	<title>Edit Sell Product | APKI Party</title>
 	<link rel="new stylesheet" href="custom.css" type="text/css" />
 
 
@@ -22,9 +22,10 @@ if(!isset($_SESSION['user'])){
 
 
  
-  if(isset($_POST['submit'])){
+  if(isset($_POST['update'])){
     $msg="Unsuccessful" ;
 
+    $id=$_POST['update'];
     $name=$_POST['name'];
     $price=$_POST['price'];
     $cname=$_POST['cname'];
@@ -59,16 +60,25 @@ if(!isset($_SESSION['user'])){
   $image[$n] = md5(uniqid()).'1.png';
   $file = 'images/sell/'.$image[$n];
   if (file_put_contents($file, $data)) $msg='Succesful';
+  if($n==0){
+  $data=mysqli_query($con,"UPDATE sell SET `img`='$image[$n]' where `id`='$id'")or die( mysqli_error($con) );
+
+  }else{
+  $data=mysqli_query($con,"UPDATE sell SET `img$n`='$image[$n]' where `id`='$id'")or die( mysqli_error($con) );
+}
   }
 }
 
+  
+      $sql = "UPDATE sell SET `name` = '$name', `price` = '$price', `cname` = '$cname', `cfbr` = '$cfbr', `caddress` = '$caddress', `cphone` = '$cphone', `cemail` = '$cemail', `cwebsite` = '$cwebsite', `desp` = '$desp', `memberid` = '$memberid', `membername` = '$membername' WHERE  `id`='$id' ";
+      mysqli_query($con, $sql) ;
 
-   $data=mysqli_query($con,"INSERT INTO sell (name,price,cname,cfbr,caddress,cphone,cemail,cwebsite,desp,memberid,membername,img,img1,img2,img3,img4,img5)VALUES ('$name','$price','$cname','$cfbr','$caddress','$cphone','$cemail','$cwebsite','$desp','$memberid','$membername','$image[0]','$image[1]','$image[2]','$image[3]','$image[4]','$image[5]')")or die( mysqli_error($con) );
 
-}
+
 
 header("location:kisansell.php"); // Redirecting To Other Page
 
+}
                     
 ?>
  
@@ -95,8 +105,40 @@ header("location:kisansell.php"); // Redirecting To Other Page
 
 			<div class="content-wrap">
 
+        <?php if(!empty($_POST['id'])){
+              $pid=$_POST['id'];
+         ?>
+
+  <?php
+      $n=8;
+
+      $rows =mysqli_query($con,"SELECT * FROM sell where id=$pid " ) or die(mysqli_error($con));
+
+      while($row=mysqli_fetch_array($rows)){
 
 
+        $formid = $row['id']; 
+        $memberid = $row['memberid']; 
+        $membername = $row['membername']; 
+        $name = $row['name']; 
+        $price = $row['price']; 
+        $cname = $row['cname']; 
+        $cfbr = $row['cfbr']; 
+        $caddress = $row['caddress']; 
+        $cemail = $row['cemail']; 
+        $cphone = $row['cphone']; 
+        $cwebsite = $row['cwebsite']; 
+        $desp = $row['desp']; 
+        $img = $row['img']; 
+        $img1 = $row['img1']; 
+        $img2 = $row['img2']; 
+        $img3 = $row['img3']; 
+        $img4 = $row['img4']; 
+        $img5 = $row['img5']; 
+        $datec = $row['datec']; 
+
+        }
+        ?>
     <div class="row">
     <div class="col-md-2">
     </div>
@@ -105,33 +147,52 @@ header("location:kisansell.php"); // Redirecting To Other Page
             
       <form method="post" action="">
         <h2 class="color"> Product Sell Form</h2>
-        <input type="text" name="cname" placeholder="Company Name" class="form-control">
-        <br>
-        <input type="text" name="cfbr" placeholder="Company FBR Number" class="form-control">
-        <br>
-        <input type="text" name="caddress" placeholder="Company Address" class="form-control">
-        <br>
-        <input type="text" name="cphone" placeholder="Company Phone Number" class="form-control">
-        <br>
-        <input type="email" name="cemail" placeholder="Company Email" class="form-control">
-        <br>
-        <input type="text" name="cwebsite" placeholder="Company Website" class="form-control">
+        <table class="table table-hover">
+          <tr> <td> Company Name: </td><td>
+        <input type="text" name="cname" value="<?php echo $cname ?>" class="form-control">
+        </td></tr>
+        <tr> <td> Company Name: </td><td>
+
+        <input type="text" name="cfbr" value="<?php echo $cfbr ?>" class="form-control">
+         </td></tr>
+        <tr> <td> Company Name: </td><td>
+
+        <input type="text" name="caddress" value="<?php echo $caddress ?>" class="form-control">
+         </td></tr>
+        <tr> <td> Company Name: </td><td>
+
+        <input type="text" name="cphone" value="<?php echo $cphone ?>" class="form-control">
+         </td></tr>
+        <tr> <td> Company Name: </td><td>
+
+        <input type="email" name="cemail" value="<?php echo $cemail ?>" class="form-control">
+         </td></tr>
+        <tr> <td> Company Name: </td><td>
+
+        <input type="text" name="cwebsite" value="<?php echo $cwebsite ?>" class="form-control">
+          </td></tr>
+        <tr> <td> Company Name: </td><td>
+
+        <input type="text" required="" name="name" value="<?php echo $name ?>" class="form-control">
+          </td></tr>
+        <tr> <td> Company Name: </td><td>
+
+        <input type="Number" required="" name="price" value="<?php echo $price ?>" class="form-control">
+          </td></tr>
+        </table>
         <br>
 
-        <input type="text" required="" name="name" placeholder="Product Name" class="form-control">
-        <br>
-        <input type="Number" required="" name="price" placeholder="Product Price" class="form-control">
-        <br>
-        <br>
-
-        <textarea rows="5" required="" class="form-control" name="desp" placeholder="Product Description" ></textarea>
+        <textarea rows="5" required="" class="form-control" name="desp"><?php echo $desp ?></textarea>
         <br>
         <br>
 
         <span style="font-size: 16px">Main Featured Images for Product:</span>
         <br>
 
-        <input id="inp_file0" required="" type="file" class="form-control">
+        <img src="images/sell/<?php echo $img ?>" alt="" style="height:100px;">
+
+
+        <input id="inp_file0" type="file" class="form-control">
         <input id="inp_img0" name="img0" type="hidden" value="">
         <br>
         <span style="font-size: 16px">Upload Upto 5 Optional Images:</span>
@@ -139,28 +200,39 @@ header("location:kisansell.php"); // Redirecting To Other Page
         <br>
         <div class="row">
         <div class="col-md-3">
+        <?php if(!empty($img1)){ ?>
+        <img src="images/sell/<?php echo $img1 ?>" alt="" style="height: 100px;">
+         <?php } ?>
         <input id="inp_file1" type="file" class="form-control">
         <input id="inp_img1" name="img1" type="hidden" value="">
         </div>
         <div class="col-md-3">
-
+        <?php if(!empty($img2)){ ?>
+        <img src="images/sell/<?php echo $img2 ?>" alt="" style="height: 100px;">
+         <?php } ?>
         <input id="inp_file2" type="file" class="form-control">
         <input id="inp_img2" name="img2" type="hidden" value="">
         </div>
         <div class="col-md-3">
-
+          <?php if(!empty($img3)){ ?>
+        <img src="images/sell/<?php echo $img3 ?>" alt="" style="height: 100px;">
+         <?php } ?>
         <input id="inp_file3" type="file" class="form-control">
         <input id="inp_img3" name="img3" type="hidden" value="">
         </div>
         <div class="col-md-3">
-
+          <?php if(!empty($img4)){ ?>
+        <img src="images/sell/<?php echo $img4 ?>" alt="" style="height: 100px;">
+         <?php } ?>
         <input id="inp_file4" type="file" class="form-control">
         <input id="inp_img4" name="img4" type="hidden" value="">
         </div>
         <div class="col-md-4">
         </div>
         <div class="col-md-3">
-
+          <?php if(!empty($img5)){ ?>
+        <img src="images/sell/<?php echo $img5 ?>" alt="" style="height: 100px;">
+         <?php } ?>
         <input id="inp_file5" type="file" class="form-control">
         <input id="inp_img5" name="img5" type="hidden" value="">
         </div>
@@ -169,7 +241,7 @@ header("location:kisansell.php"); // Redirecting To Other Page
         <br>
         <br>
         <div class="text-center">
-        <input id="bt_save" type="submit" class="btn-info btn" value="Submit" name="submit">
+        <button id="bt_save" type="submit" class="btn-info btn" value="<?php echo $formid ?>"  name="update">Update</button>
         </div>
       </form>
 
@@ -179,6 +251,8 @@ header("location:kisansell.php"); // Redirecting To Other Page
   </div>
 		
 <br><br>
+
+<?php } ?>
 
 			</div>
 
